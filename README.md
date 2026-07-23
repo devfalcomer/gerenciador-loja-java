@@ -1,18 +1,35 @@
-## Getting Started
+# Sistema de Loja - Calculadora de Impostos e Descontos
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto é uma aplicação Java desenvolvida para demonstrar o uso prático do padrão de projeto **Strategy** (GoF), aplicando boas práticas de Programação Orientada a Objetos e princípios SOLID (como o *Open/Closed Principle*).
 
-## Folder Structure
+## Sobre o Projeto
 
-The workspace contains two folders by default, where:
+O objetivo do sistema é calcular impostos (como ICMS e ISS) e aplicar regras de negócio em orçamentos sem acoplar a lógica de cálculo à regra principal da loja.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Com a utilização do padrão **Strategy**, novas alíquotas ou tipos de impostos podem ser adicionados criando novas classes, sem a necessidade de alterar a classe principal da calculadora ou encher o código de condicionais (`if/else` ou `switch`).
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Design Pattern Utilizado
 
-## Dependency Management
+### **Strategy**
+Permite definir uma família de algoritmos, encapsular cada um deles e torná-los intercambiáveis. O Strategy permite que o algoritmo varie independentemente dos clientes que o utilizam.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+* **Exemplo no código:** As regras de cálculo de impostos (`ICMS`, `ISS`) implementam a mesma interface (`Imposto`), permitindo que a `CalculadoraDeImpostos` processe qualquer taxa de forma genérica.
+
+---
+
+
+## Tecnologias utilizadas
+
+- **Java 21**
+- **POO (Programação Orientada a Objetos)**
+- **Design Patterns (GoF)**
+
+## Estrutura de Pacotes
+
+```text
+src/loja/
+├── desconto/       # Classes referentes às estratégias e regras de desconto
+├── imposto/        # Interface Imposto, Calculadora e implementações (ICMS, ISS)
+└── orcamento/      # Modelo de Orcamento
